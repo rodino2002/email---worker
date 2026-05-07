@@ -5,6 +5,36 @@ import (
 	"time"
 )
 
+func CountProcessedMessages() (int, error) {
+	var count int
+
+	query := `
+		SELECT COUNT(*)
+		FROM receivers
+		WHERE status IN ('DELIVRD', 'ESME_ROK', 'REJECTD')
+		  AND updated_at >= NOW() - INTERVAL '5 minutes'
+	`
+
+	// query := `
+	// 	SELECT
+	// 	updated_at AS ultima_data
+	// 	FROM receivers
+	// 	WHERE status IN ( 'DELIVRD','ESME_ROK', 'REJECTD' )
+	// 	ORDER BY updated_at DESC LIMIT 1
+	// `
+
+	err := DB.QueryRow(
+		context.Background(),
+		query,
+	).Scan(&count)
+
+	if err != nil {
+		return 0, err
+	}
+
+	return count, nil
+}
+
 func CountPendingMessages() (int, error) {
 	var count int
 	now := time.Now()

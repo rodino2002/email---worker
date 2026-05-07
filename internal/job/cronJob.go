@@ -16,9 +16,12 @@ func StartMessagesGOSMSJob() {
 	}
 
 	c := cron.New(cron.WithSeconds(), cron.WithLocation(loc))
-	c.AddFunc("0 */5 * * * *", func() {
-		service.CheckAndNotify()
-	})
+	//	0 */5 * * * * para 5minutos
+	//	@every 5s: */5 * * * * * para teste rápido
+	_, err =
+		c.AddFunc("0 */30 * * * *", func() {
+			service.CheckAndNotify()
+		})
 	c.Start()
 	log.Print("CRONJOB configurado com sucesso")
 

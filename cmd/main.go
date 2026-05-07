@@ -6,8 +6,6 @@ import (
 	"email-WORKER/internal/job"
 	"fmt"
 	"log"
-
-	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -21,8 +19,9 @@ func main() {
 	db.Connect(envs.DatabaseURL)
 	job.StartMessagesGOSMSJob()
 
-	route := gin.Default()
+	// route := gin.Default()
 
-	route.Run(":8081") // listen and serve on
+	// route.Run(":8081") // listen and serve on
+	select {}
 
 }
