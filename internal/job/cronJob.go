@@ -8,7 +8,7 @@ import (
 	"github.com/robfig/cron/v3"
 )
 
-func StartContaCorrentJob() {
+func StartMessagesGOSMSJob() {
 	log.Print("Configurando o CRONJOB Para verificar mensagens pendentes")
 	loc, err := time.LoadLocation("Africa/Lagos")
 	if err != nil {
@@ -21,4 +21,5 @@ func StartContaCorrentJob() {
 	})
 	c.Start()
 	log.Print("CRONJOB configurado com sucesso")
+
 }

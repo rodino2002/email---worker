@@ -19,7 +19,7 @@ func main() {
 	}
 
 	db.Connect(envs.DatabaseURL)
-	job.StartContaCorrentJob()
+	job.StartMessagesGOSMSJob()
 
 	route := gin.Default()
 
