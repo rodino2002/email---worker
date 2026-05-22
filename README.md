@@ -343,4 +343,4 @@ O worker pode evoluir para:
 
 # 👨‍💻 Autor
 
-Desenvolvido por Felici.
+Desenvolvido por Feliciano Rodino
